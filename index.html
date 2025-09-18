@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise For You!!</title>
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        body {
+            background-image: url('./WhatsApp\ Image\ 2025-09-15\ at\ 00.07.33_42fda5ae.jpg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+        }
+
+        .login-container h1, .instruction-text {
+            text-align: center;
+        }
+
+        .instruction-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        input::placeholder {
+            color: #eee;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff69b4;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff85c1;
+        }
+
+        .next-page-link {
+            display: none; 
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .next-page-link a {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>I have Something Really Special for You...</h1>
+        <p class="instruction-text">If your name is Mahi, then and only then enter.</p>
+        
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="The secret password Lavish gave you">
+        
+        <button onclick="checkPassword()">Enter</button>
+
+        <div id="next-link-container" class="next-page-link">
+            <a href="page2.html">You've unlocked the surprise! Click here...</a>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            // Get the text from the input boxes
+            const nameInput = document.getElementById('name').value;
+            const passwordInput = document.getElementById('password').value;
+            
+            // This is the correct password
+            const correctPassword = "lavish123";
+
+            // 1. Check if either field is empty
+            if (nameInput.trim() === '' || passwordInput.trim() === '') {
+                alert('Please fill in both your name and password!');
+            
+            // 2. If not empty, check if the password is correct
+            } else if (passwordInput !== correctPassword) {
+                alert('Enter the secret password Lavish gave you!!!');
+
+            // 3. If fields are filled AND the password is correct, show the link
+            } else {
+                document.getElementById('next-link-container').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>

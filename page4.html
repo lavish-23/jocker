@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>did u liked it??</title>
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        body {
+            /* This is where you set the background image */
+            background-image: url('./combined\(4\).jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* A fallback color in case the image doesn't load */
+            background-color: #1e272e; 
+        }
+
+        /* Styling for the Home Button */
+        .home-button {
+            /* This positions the button at the bottom of the screen */
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%); /* This horizontally centers the button */
+            
+            /* Visual styling to match the other buttons */
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .home-button:hover {
+            transform: translateX(-50%) scale(1.1); /* Animate the centering and scale */
+            background-color: #ff85c1;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-button">HOME</a>
+
+</body>
+</html>

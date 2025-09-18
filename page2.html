@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mauu!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat&display=swap" rel="stylesheet">
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-image: url('./page2_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            background-color: #fce4ec; 
+        }
+
+        .content-wrapper {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 800px;
+            margin: 5vh auto;
+            color: #fff;
+        }
+
+        .birthday-heading {
+            font-family: 'Pacifico', cursive;
+            font-size: 4.5em;
+            color: #ffeb3b;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            margin-top: 20px;
+        }
+
+        /* --- STYLES REVERTED TO OVAL & MADE BIGGER --- */
+        .birthday-image {
+            max-width: 350px; /* Increased size to 400px */
+            width: 80%; /* Ensures it's responsive on smaller screens */
+            border-radius: 50%; /* Creates the oval shape on a non-square image */
+            border: 8px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        /* --- END OF IMAGE STYLES --- */
+
+        .wish-container {
+            margin-top: 40px;
+            min-height: 150px;
+        }
+
+        .birthday-wish {
+            font-family: 'Caveat', cursive;
+            font-size: 2.2em;
+            color: #ffecb3;
+            display: inline-block;
+            line-height: 1.4;
+        }
+
+        .birthday-wish::after {
+            content: '|';
+            display: inline-block;
+            animation: blink 0.7s infinite;
+            color: #ffecb3;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .next-button {
+            display: none;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .next-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="birthday-song" loop>
+        <source src="./birthday-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="content-wrapper">
+        <h1 class="birthday-heading">Happy Birthday Mahi!</h1>
+
+        <img src="./pic_chau.jpg" alt="Happy Birthday!" class="birthday-image">
+        
+        <div class="wish-container">
+            <p class="birthday-wish" id="birthday-wish" data-text="Wishing you the happiest of birthday filled with love, laughter, and everything you wished for. You deserve all the happiness in the world!. Keep glowing and growing hard and Lots of love from Lau. Enjoy your day with lots of happiness."></p>
+        </div>
+
+        <a href="page3.html" id="next-button" class="next-button">NEXT →</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const song = document.getElementById('birthday-song');
+            song.play().catch(error => {
+                console.log("Audio autoplay was prevented. Waiting for user interaction.");
+                document.body.addEventListener('click', () => song.play(), { once: true });
+            });
+
+            const nextButton = document.getElementById('next-button');
+            setTimeout(function() {
+                nextButton.style.display = 'inline-block';
+            }, 10000);
+
+            const wishElement = document.getElementById('birthday-wish');
+            const fullText = wishElement.getAttribute('data-text');
+            let i = 0;
+            const typingSpeed = 70;
+
+            wishElement.innerHTML = "";
+
+            function typeWriter() {
+                if (i < fullText.length) {
+                    wishElement.innerHTML += fullText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, typingSpeed);
+                } else {
+                    const cursor = document.querySelector('.birthday-wish::after');
+                    if (cursor) cursor.style.display = 'none';
+                    wishElement.classList.add('typing-done'); 
+                }
+            }
+            setTimeout(typeWriter, 1000);
+        };
+    </script>
+</body>
+</html>
